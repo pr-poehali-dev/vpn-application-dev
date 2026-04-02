@@ -9,8 +9,17 @@ interface KeySetupProps {
 
 type KeyType = "outline" | "wireguard" | "unknown";
 
+const PRESET_KEYS = [
+  {
+    name: "Рабочий",
+    key: "https://connect.alpha-network.org/uhNAGRUWzp44XSEo",
+    type: "Outline",
+    badge: "✓ Проверен",
+  },
+];
+
 function detectKeyType(key: string): KeyType {
-  if (key.startsWith("ss://") || key.startsWith("ssconf://")) return "outline";
+  if (key.startsWith("ss://") || key.startsWith("ssconf://") || key.startsWith("https://connect.")) return "outline";
   if (key.includes("[Interface]") || key.includes("PrivateKey")) return "wireguard";
   return "unknown";
 }
@@ -48,6 +57,37 @@ export default function KeySetup({ vpnKey, onSave, onClose }: KeySetupProps) {
           <Icon name="ArrowLeft" size={16} className="text-white/60" />
         </button>
         <h2 className="text-xl font-bold gradient-text">Мой VPN-ключ</h2>
+      </div>
+
+      {/* Preset keys */}
+      <div className="glass rounded-2xl p-4">
+        <p className="text-xs text-white/40 uppercase tracking-widest mb-3">Готовые ключи</p>
+        <div className="flex flex-col gap-2">
+          {PRESET_KEYS.map((preset) => (
+            <button
+              key={preset.name}
+              onClick={() => setValue(preset.key)}
+              className={`flex items-center justify-between p-3 rounded-xl transition-all duration-200 text-left ${
+                value === preset.key
+                  ? "bg-emerald-500/15 border border-emerald-500/30"
+                  : "bg-white/4 border border-white/8 hover:bg-white/8"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${value === preset.key ? "bg-emerald-400" : "bg-white/20"}`} />
+                <div>
+                  <p className={`text-sm font-semibold ${value === preset.key ? "text-emerald-400" : "text-white"}`}>
+                    {preset.name}
+                  </p>
+                  <p className="text-[10px] text-white/30">{preset.type}</p>
+                </div>
+              </div>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
+                {preset.badge}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* How it works */}
