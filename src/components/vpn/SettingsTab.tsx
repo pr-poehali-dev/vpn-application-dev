@@ -95,7 +95,7 @@ export default function SettingsTab({
         </div>
 
         <div className="glass rounded-2xl p-4 mt-4 text-center">
-          <p className="text-xs text-white/30">NovaPulse VPN v1.0.0</p>
+          <p className="text-xs text-white/30">RealVPN v1.0.0</p>
           <p className="text-[10px] text-white/20 mt-1">Ваши данные надёжно защищены</p>
         </div>
       </div>

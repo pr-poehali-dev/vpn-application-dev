@@ -70,7 +70,7 @@ export default function Index() {
             >
               <Icon name="Shield" size={14} className="text-black" />
             </div>
-            <span className="font-bold text-sm tracking-wide gradient-text">NovaPulse</span>
+            <span className="font-bold text-sm tracking-wide gradient-text">RealVPN</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-1 h-3 bg-white/20 rounded-full" />
