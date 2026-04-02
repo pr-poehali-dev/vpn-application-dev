@@ -97,6 +97,17 @@ export default function SettingsTab({
         <div className="glass rounded-2xl p-4 mt-4 text-center">
           <p className="text-xs text-white/30">RealVPN v1.0.0</p>
           <p className="text-[10px] text-white/20 mt-1">Ваши данные надёжно защищены</p>
+          <a
+            href="https://t.me/Germann12_21"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-400/20 text-cyan-400 text-xs font-medium hover:bg-cyan-500/20 transition-all duration-200"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.16 14.35l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.656.236z"/>
+            </svg>
+            @Germann12_21
+          </a>
         </div>
       </div>
     </div>
