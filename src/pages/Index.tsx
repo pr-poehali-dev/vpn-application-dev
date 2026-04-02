@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 import HomeTab from "@/components/vpn/HomeTab";
 import ServersTab from "@/components/vpn/ServersTab";
 import SettingsTab from "@/components/vpn/SettingsTab";
+import KeySetup from "@/components/vpn/KeySetup";
 import { Tab, ConnectionStatus, Protocol, Server, SERVERS } from "@/components/vpn/types";
 
 export default function Index() {
@@ -14,6 +15,8 @@ export default function Index() {
   const [notifications, setNotifications] = useState(true);
   const [killSwitch, setKillSwitch] = useState(false);
   const [dnsLeak, setDnsLeak] = useState(true);
+  const [vpnKey, setVpnKey] = useState("");
+  const [showKeySetup, setShowKeySetup] = useState(false);
 
   const handleToggle = () => {
     if (status === "disconnected") {
@@ -80,7 +83,7 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto" key={tab}>
+        <div className="flex-1 overflow-y-auto" key={tab + String(showKeySetup)}>
           {tab === "home" && (
             <HomeTab
               status={status}
@@ -92,7 +95,7 @@ export default function Index() {
           {tab === "servers" && (
             <ServersTab servers={SERVERS} selectedId={selectedServer.id} onSelect={handleSelectServer} />
           )}
-          {tab === "settings" && (
+          {tab === "settings" && !showKeySetup && (
             <SettingsTab
               protocol={protocol}
               setProtocol={setProtocol}
@@ -104,6 +107,15 @@ export default function Index() {
               setKillSwitch={setKillSwitch}
               dnsLeak={dnsLeak}
               setDnsLeak={setDnsLeak}
+              vpnKey={vpnKey}
+              onKeySetup={() => setShowKeySetup(true)}
+            />
+          )}
+          {tab === "settings" && showKeySetup && (
+            <KeySetup
+              vpnKey={vpnKey}
+              onSave={setVpnKey}
+              onClose={() => setShowKeySetup(false)}
             />
           )}
         </div>

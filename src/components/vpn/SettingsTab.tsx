@@ -12,6 +12,8 @@ interface SettingsTabProps {
   setKillSwitch: (v: boolean) => void;
   dnsLeak: boolean;
   setDnsLeak: (v: boolean) => void;
+  vpnKey: string;
+  onKeySetup: () => void;
 }
 
 export default function SettingsTab({
@@ -25,11 +27,32 @@ export default function SettingsTab({
   setKillSwitch,
   dnsLeak,
   setDnsLeak,
+  vpnKey,
+  onKeySetup,
 }: SettingsTabProps) {
   return (
     <div className="flex flex-col px-5 pt-6 pb-6 gap-5">
       <div className="animate-fade-in-up opacity-0" style={{ animationFillMode: "forwards" }}>
         <h2 className="text-xl font-bold gradient-text mb-5">Настройки</h2>
+
+        {/* VPN Key Block */}
+        <button
+          onClick={onKeySetup}
+          className="w-full glass glass-hover rounded-2xl p-4 flex items-center justify-between mb-4 group"
+        >
+          <div className="flex items-center gap-3">
+            <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${vpnKey ? "bg-emerald-500/20" : "bg-white/5"}`}>
+              <Icon name="KeyRound" size={14} className={vpnKey ? "text-emerald-400" : "text-white/30"} />
+            </div>
+            <div className="text-left">
+              <p className="text-sm font-medium text-white">Мой VPN-ключ</p>
+              <p className="text-xs text-white/40">
+                {vpnKey ? "✓ Ключ сохранён" : "Не настроен"}
+              </p>
+            </div>
+          </div>
+          <Icon name="ChevronRight" size={16} className="text-white/30 group-hover:text-cyan-400 transition-colors" />
+        </button>
 
         <div className="glass rounded-2xl p-4 mb-4">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-3">Протокол</p>
