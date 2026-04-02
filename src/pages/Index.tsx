@@ -15,7 +15,7 @@ export default function Index() {
   const [notifications, setNotifications] = useState(true);
   const [killSwitch, setKillSwitch] = useState(false);
   const [dnsLeak, setDnsLeak] = useState(true);
-  const [vpnKey, setVpnKey] = useState("");
+  const [vpnKey, setVpnKey] = useState("https://connect.alpha-network.org/uhNAGRUWzp44XSEo");
   const [showKeySetup, setShowKeySetup] = useState(false);
 
   const handleToggle = () => {
